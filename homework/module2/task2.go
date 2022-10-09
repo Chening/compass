@@ -11,9 +11,9 @@ import (
 )
 
 // 2.读取当前系统的环境变量中的 VERSION 配置，并写入 response header
-// start shell 
+// start shell
 // go run  task2.go
-// go run  task2.go  -version=V1
+// go run  task2.go  -VERSION=V1
 // access url -> http://127.0.0.1:19002/back_header_with_version
 func main() {
 	version := flag.String("VERSION", "DEFAULT", "请输入VERSION 配置")
