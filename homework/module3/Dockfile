@@ -1,8 +1,6 @@
 FROM golang:1.18 AS build
 
-ENV GO111MODULE=off \
-    CGO_ENABLED=0 \
-    GOOS=linux \
+ENV GOOS=linux \
     GOARCH=amd64
 
 WORKDIR /build
