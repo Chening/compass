@@ -27,8 +27,6 @@
     ENTRYPOINT ["/httpserver"]
     ```
     
-    ![Screen Shot 2022-10-16 at 22.00.49.png](./images/Screen_Shot_2022-10-16_at_22.00.49.png)
-    
 2. 打包 标签 推送镜像
     
     ```docker
@@ -51,9 +49,11 @@
     docker logout
     ```
     
-    ![Screen Shot 2022-10-16 at 22.11.29.png](./images/Screen_Shot_2022-10-16_at_22.11.29.png)
+    ![docker build](./images/1.png)
+
+    ![docker push](./images/2.png)
     
-    ![Screen Shot 2022-10-16 at 22.58.23.png](./images/Screen_Shot_2022-10-16_at_22.58.23.png)
+    ![dockerhub](./images/3.png)
     
 3. 拉取镜像
     
@@ -71,8 +71,9 @@
     docker run --name=httpserver   -d  --restart=always -p  19004:19004   totorest/httpserver:v1.4
     ```
     
-    ![Screen Shot 2022-10-16 at 23.02.31.png](./images/Screen_Shot_2022-10-16_at_23.02.31.png)
-    
+    ![docker images](./images/4.png)
+    ![access httpserver](./images/6.png)
+
 5. 进入容器
     
     ```docker
@@ -81,4 +82,4 @@
     nsenter -t 24160 -n ip a
     ```
     
-    ![Screen Shot 2022-10-16 at 23.09.12.png](./images/Screen_Shot_2022-10-16_at_23.09.12.png)
+    ![nsenter](./images/7.png)
