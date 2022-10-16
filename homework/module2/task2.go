@@ -19,7 +19,7 @@ func main() {
 	version := flag.String("VERSION", "DEFAULT", "请输入VERSION 配置")
 
 	//import dont forget invole this function
-	flag.Parse()
+	flag.Parse() 
 
 	// back headers with version
 	http.HandleFunc("/back_header_with_version", func(w http.ResponseWriter, r *http.Request) {
