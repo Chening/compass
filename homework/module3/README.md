@@ -27,7 +27,7 @@
     ENTRYPOINT ["/httpserver"]
     ```
     
-    ![Screen Shot 2022-10-16 at 22.00.49.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/3d6d43b3-d13c-48a9-af65-94e11b90ba6a/Screen_Shot_2022-10-16_at_22.00.49.png)
+    ![Screen Shot 2022-10-16 at 22.00.49.png](./images/Screen_Shot_2022-10-16_at_22.00.49.png)
     
 2. 打包 标签 推送镜像
     
@@ -51,9 +51,9 @@
     docker logout
     ```
     
-    ![Screen Shot 2022-10-16 at 22.11.29.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/858ccdfd-82f6-43b7-89ac-e4e2e6e81d09/Screen_Shot_2022-10-16_at_22.11.29.png)
+    ![Screen Shot 2022-10-16 at 22.11.29.png](./images/Screen_Shot_2022-10-16_at_22.11.29.png)
     
-    ![Screen Shot 2022-10-16 at 22.58.23.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/55729c74-4340-4c51-9965-c2c902a6bc4f/Screen_Shot_2022-10-16_at_22.58.23.png)
+    ![Screen Shot 2022-10-16 at 22.58.23.png](./images/Screen_Shot_2022-10-16_at_22.58.23.png)
     
 3. 拉取镜像
     
@@ -71,7 +71,7 @@
     docker run --name=httpserver   -d  --restart=always -p  19004:19004   totorest/httpserver:v1.4
     ```
     
-    ![Screen Shot 2022-10-16 at 23.02.31.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/02e3afb9-5e92-4784-bd88-2c9bdbe86edf/Screen_Shot_2022-10-16_at_23.02.31.png)
+    ![Screen Shot 2022-10-16 at 23.02.31.png](./images/Screen_Shot_2022-10-16_at_23.02.31.png)
     
 5. 进入容器
     
@@ -81,4 +81,4 @@
     nsenter -t 24160 -n ip a
     ```
     
-    ![Screen Shot 2022-10-16 at 23.09.12.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/acc8879d-735d-4b2f-b409-8be2a11471c5/Screen_Shot_2022-10-16_at_23.09.12.png)
+    ![Screen Shot 2022-10-16 at 23.09.12.png](./images/Screen_Shot_2022-10-16_at_23.09.12.png)
