@@ -8,4 +8,6 @@ FROM alpine
 COPY --from=build /build/httpserver /
 EXPOSE 19004
 
-ENTRYPOINT ["/httpserver", "-config", "config.yml"]
+ENTRYPOINT ["/httpserver"]
+
+# CMD /httpserver -config=/app/config.yml
