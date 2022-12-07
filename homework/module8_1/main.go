@@ -23,23 +23,23 @@ func main() {
 
 	 // Generate our config based on the config supplied
     // by the user in the flags
-    cfgPath, err := ParseFlags()
-    if err != nil {
-        logrus.Fatal(err)
-    }
-    cfg, err := NewConfig(cfgPath)
-    if err != nil {
-        logrus.Fatal(err)
-    }
+    // cfgPath, err := ParseFlags()
+    // if err != nil {
+    //     logrus.Fatal(err)
+    // }
+    // cfg, err := NewConfig(cfgPath)
+    // if err != nil {
+    //     logrus.Fatal(err)
+    // }
 
-    logLevel := cfg.Server.LogLevel
+    // logLevel := cfg.Server.LogLevel
 
-    //TODO more case
-	if logLevel == "INFO" {
-		logrus.SetLevel(logrus.InfoLevel)
-	} else if logLevel == "ERR" {
-		logrus.SetLevel(logrus.ErrorLevel)
-	}
+    // //TODO more case
+	// if logLevel == "INFO" {
+	// 	logrus.SetLevel(logrus.InfoLevel)
+	// } else if logLevel == "ERR" {
+	// 	logrus.SetLevel(logrus.ErrorLevel)
+	// }
 
 	
 	// back headers
@@ -60,7 +60,7 @@ func main() {
 	}()
 	
 
-	quit := make(chan os.Signal)
+	quit := make(chan os.Signal, 1)
 	signal.Notify(quit, syscall.SIGINT, syscall.SIGTERM)
 	<-quit
 	logrus.Info("我被优雅终止了")
@@ -106,8 +106,6 @@ func NewConfig(configPath string) (*Config, error) {
     return config, nil
 }
 
-
-
 // ValidateConfigPath just makes sure, that the path provided is a file,
 // that can be read
 func ValidateConfigPath(path string) error {
@@ -129,7 +127,7 @@ func ParseFlags() (string, error) {
 
     // Set up a CLI flag called "-config" to allow users
     // to supply the configuration file
-    flag.StringVar(&configPath, "config", "./config.yaml", "path to config file")
+    flag.StringVar(&configPath, "config", "./app/config.yaml", "path to config file")
 
     // Actually parse the flags
     flag.Parse()
