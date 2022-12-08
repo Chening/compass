@@ -62,7 +62,7 @@ func main() {
     router.Use(prometheusMiddleware)
 
     // Prometheus endpoint
-	router.Path("/prometheus").Handler(promhttp.Handler())
+	router.Path("/metrics").Handler(promhttp.Handler())
 
 	// back headers
     router.Path("/healthz").HandlerFunc(healthz)
@@ -83,7 +83,7 @@ func main() {
 	}(router)
 	
 
-	quit := make(chan os.Signal)
+	quit := make(chan os.Signal ,1)
 	signal.Notify(quit, syscall.SIGINT, syscall.SIGTERM)
 	<-quit
 	logrus.Info("我被优雅终止了")
@@ -99,7 +99,7 @@ func healthz(w http.ResponseWriter, r *http.Request) {
     //为 HTTPServer 添加 0-2 秒的随机延时
     rand.Seed(now.UnixNano())
     randTime := rand.Intn(2000)
-    fmt.Printf("sleep %d ms \n ", randTime)
+    fmt.Printf("content length %d, sleep %d ms \n ", r.ContentLength, randTime)
 
     time.Sleep(time.Duration(randTime) * time.Millisecond)
 

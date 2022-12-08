@@ -1,6 +1,6 @@
 apiVersion: apps/v1
 kind: Deployment
-metadata:
+metadata:  
   name: httpserver
   labels:
     app: httpserver
@@ -11,6 +11,9 @@ spec:
       app: httpserver
   template:
     metadata:
+      annotations:
+        prometheus.io/scrape: "true"
+        prometheus.io/port: "19004"
       labels:
         app: httpserver
     spec:
@@ -18,7 +21,7 @@ spec:
         - name: cloudnative
       containers:
         - name: httpserver
-          image: totorest/httpserver:v1.8.1
+          image: totorest/httpserver:v1.10.5
           ports:
           - containerPort: 19004
           readinessProbe:
@@ -35,10 +38,3 @@ spec:
             requests:
               memory: "100Mi"
               cpu: 20m
-          volumeMounts:
-          - name: config
-            mountPath: /
-      volumes:
-      - name: config  
-        configMap:
-          name: httpserver-config
