@@ -15,20 +15,20 @@ var requestDurations = prometheus.NewHistogram(prometheus.HistogramOpts{
 
 # 增加init
 func init() {
-	prometheus.Register(requestDurations)
+    prometheus.Register(requestDurations)
 }
 
 # 定义统一的拦截器 
 func prometheusMiddleware(next http.Handler) http.Handler {
-	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+    return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
         now := time.Now()
 
-		next.ServeHTTP(w, r)
+        next.ServeHTTP(w, r)
 
         requestDurations.(prometheus.ExemplarObserver).ObserveWithExemplar(
             time.Since(now).Seconds(), prometheus.Labels{"api": "healthz"},
         )
-	})
+  })
 }
 
 # 暴露监控端点
